@@ -1,35 +1,24 @@
-{
+{ 
   "scanSettings": {
     "configMode": "AUTO",
     "configExternalURL": "",
     "projectToken": "",
-    "baseBranches": ['master'],
-    "enableLicenseViolations": true
+    "baseBranches": []
   },
   "checkRunSettings": {
     "vulnerableCheckRunConclusionLevel": "failure",
-    "displayMode": "baseline"
+    "displayMode": "diff"
   },
   "issueSettings": {
-    "minSeverityLevel": "NONE",
+    "minSeverityLevel": "LOW",
     "issueType": "DEPENDENCY"
   },
-  "leastVulnerablePackageSettings": {
-    "enabled": true
-  },
- "scanSettingsSAST": {
-    "enableScan": true,
-    "scanPullRequests": true,
-    "incrementalScan": false,
-    "baseBranches": ["master"]
-  },
-  "checkRunSettingsSAST": {
-    "checkRunConclusionLevel": "failure",
-    "severityThreshold": "high"
+  "leastVulnerablePackageSettings": {                 
+    "enabled": true     
   },
   "remediateSettings": {
     "workflowRules": {
-      "enabled": false
+      "enabled": true
     },
     "enableRenovate": true,
     "extends": [
@@ -38,9 +27,20 @@
       ],
       "packageRules": [
       {
-        "matchConfidence": ["very high"],
-        "matchUpdateTypes": ["patch", "minor"],
-        "automerge": false
+        "groupName": "minor and patch",
+      	"matchUpdateTypes": ["minor", "patch"],
+      	"matchConfidence": ["very high", "high"],
+      	"automerge": true
+      },
+      {
+      	"matchUpdateTypes": ["major"],
+      	"matchConfidence": ["very high"],
+      	"addLabels": ["Major: very high confidence"]
+      },
+      {
+      	"matchUpdateTypes": ["major"],
+      	"matchConfidence": ["high"],
+      	"addLabels": ["Major: high confidence"]
       }
     ]
   }
