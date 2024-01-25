@@ -1,0 +1,47 @@
+{
+  "scanSettings": {
+    "configMode": "AUTO",
+    "configExternalURL": "",
+    "projectToken": "",
+    "baseBranches": ['master'],
+    "enableLicenseViolations": true
+  },
+  "checkRunSettings": {
+    "vulnerableCheckRunConclusionLevel": "failure",
+    "displayMode": "baseline"
+  },
+  "issueSettings": {
+    "minSeverityLevel": "NONE",
+    "issueType": "DEPENDENCY"
+  },
+  "leastVulnerablePackageSettings": {
+    "enabled": true
+  },
+ "scanSettingsSAST": {
+    "enableScan": true,
+    "scanPullRequests": true,
+    "incrementalScan": false,
+    "baseBranches": ["master"]
+  },
+  "checkRunSettingsSAST": {
+    "checkRunConclusionLevel": "failure",
+    "severityThreshold": "high"
+  },
+  "remediateSettings": {
+    "workflowRules": {
+      "enabled": false
+    },
+    "enableRenovate": true,
+    "extends": [
+      "config:base",
+      "github>whitesource/merge-confidence:beta"
+      ],
+      "packageRules": [
+      {
+        "matchConfidence": ["very high"],
+        "matchUpdateTypes": ["patch", "minor"],
+        "automerge": false
+      }
+    ]
+  }
+}
