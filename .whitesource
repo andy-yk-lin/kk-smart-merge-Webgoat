@@ -27,7 +27,7 @@
       ],
       "packageRules": [
       {
-        "groupName": "High Merge Confidence",
+        "groupName": "High Merge Confidence test",
         "matchConfidence": ["high", "very high"]
       }
     ]
